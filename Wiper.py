@@ -4,6 +4,7 @@ from numpy import sin, cos
 class Wiper:
 
     pi = 3.14159265
+    points = []
 
     def __init__(self, screen, pos, r, n, theta):
         self.screen = screen
@@ -13,28 +14,21 @@ class Wiper:
         self.theta = theta
 
     def draw(self):
-        self.drawcurve()
-        self.drawline()
+        Wiper.points.append(self.drawcurve())
+        if len(Wiper.points) > 2:
+            pygame.draw.aalines(self.screen,(255,255,255), False, Wiper.points)
 
-    def drawcurve(self, arr = []):
-        for i in range(100):
-            theta = i/50 * Wiper.pi
-            x = self.r * cos(theta) + self.pos[0]
-            y = self.r * sin(theta) + self.pos[1]
-            if self.n > 1:
-                Wiper(self.screen, (x,y), self.r/3, self.n-1, self.theta*3).drawcurve()
-            else:
-                arr.append((x,y))
-        pygame.draw.polygon(self.screen, (255,255,255), arr, 1)
-
-
-
-    def drawline(self):
+    def drawcurve(self):
         x = self.r * cos(self.theta) + self.pos[0]
         y = self.r * sin(self.theta) + self.pos[1]
         pygame.draw.line(self.screen, (255,255,255), self.pos, (x,y))
         if self.n > 1:
-            Wiper(self.screen, (x,y), self.r/3, self.n-1, self.theta*3).drawline()
+            return Wiper(self.screen, (x,y), self.r/2, self.n-1, self.theta*3).drawcurve()
+        else:
+            pygame.draw.circle(self.screen, (255,255,255),(int(x),int(y)) ,5)
+            return (int(x),int(y))
 
     def update(self):
-        self.theta += 0.0005
+        self.theta += 0.002
+        if self.theta > 2 * Wiper.pi:
+            _ = Wiper.points.pop(0)
