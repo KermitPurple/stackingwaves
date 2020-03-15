@@ -7,6 +7,7 @@ class Wiper:
     points = []
     theta_scale = 3
     r_scale = 2
+    speed = 0.002
 
     def __init__(self, screen, pos, r, n, theta):
         self.screen = screen
@@ -37,6 +38,15 @@ class Wiper:
         return color
 
     def update(self):
-        self.theta += 0.002
+        self.theta += Wiper.speed
         if self.theta > 2 * Wiper.pi:
             _ = Wiper.points.pop(0)
+
+    def print_controls(self):
+        print("=" * 75)
+        print("r = select r scale")
+        print("t = select theta scale")
+        print("n = select n")
+        print("s = select speed")
+        print("1-9 = change value for selected")
+        print("=" * 75)
