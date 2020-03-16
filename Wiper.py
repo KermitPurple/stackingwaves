@@ -19,7 +19,7 @@ class Wiper:
         self.paused = False
 
     def draw(self):
-        if self.theta < 2 * Wiper.pi or not Wiper.deletion_mode:
+        if (self.theta < 2 * Wiper.pi or not Wiper.deletion_mode) and not self.paused:
             Wiper.points.append(self.drawcurve())
         else: 
             self.drawcurve()
@@ -47,11 +47,11 @@ class Wiper:
             self.theta += Wiper.speed
             if self.theta > 2 * Wiper.pi and len(Wiper.points) > 0:
                 _ = Wiper.points.pop(0)
-        if self.theta > 4 * Wiper.pi:
-            if Wiper.deletion_mode:
-                self.theta = 0
-            else:
-                self.theta = 2 * Wiper.pi
+            if self.theta > 4 * Wiper.pi:
+                if Wiper.deletion_mode:
+                    self.theta = 0
+                else:
+                    self.theta = 2 * Wiper.pi
 
     def print_controls(self):
         print("=" * 75)
