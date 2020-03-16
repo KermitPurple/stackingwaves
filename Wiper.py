@@ -15,6 +15,7 @@ class Wiper:
         self.r = r
         self.n = n
         self.theta = theta
+        self.paused = False
 
     def draw(self):
         Wiper.points.append(self.drawcurve())
@@ -38,12 +39,14 @@ class Wiper:
         return color
 
     def update(self):
-        self.theta += Wiper.speed
-        if self.theta > 2 * Wiper.pi:
-            _ = Wiper.points.pop(0)
+        if not self.paused:
+            self.theta += Wiper.speed
+            if self.theta > 2 * Wiper.pi:
+                _ = Wiper.points.pop(0)
 
     def print_controls(self):
         print("=" * 75)
+        print("p = pause")
         print("r = select r scale")
         print("t = select theta scale")
         print("n = select n")

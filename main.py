@@ -82,6 +82,8 @@ while running:
                 selected = str(event.unicode)
             elif event.unicode == 't':
                 selected = "theta"
+            elif event.unicode == 'p':
+                wiper.paused = not wiper.paused
     screen.fill((0,0,0))
     wiper.draw()
     wiper.update()
