@@ -56,6 +56,7 @@ class Wiper:
     def print_controls(self):
         print("=" * 75)
         print("p = pause")
+        print("d = deletion mode")
         print("r = select r scale")
         print("t = select theta scale")
         print("n = select n")
