@@ -84,6 +84,10 @@ while running:
                 selected = "theta"
             elif event.unicode == 'p':
                 wiper.paused = not wiper.paused
+            elif event.unicode == 'd':
+                Wiper.deletion_mode = not Wiper.deletion_mode
+                wiper.theta = 0
+                Wiper.points = []
     screen.fill((0,0,0))
     wiper.draw()
     wiper.update()
