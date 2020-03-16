@@ -9,6 +9,8 @@ class Wiper:
     r_scale = 2
     speed = 0.002
     deletion_mode = False
+    line_on = True
+    curve_on = True
 
     def __init__(self, screen, pos, r, n, theta):
         self.screen = screen
@@ -23,9 +25,10 @@ class Wiper:
             Wiper.points.append(self.drawcurve())
         else: 
             self.drawcurve()
-        if len(Wiper.points) > 2:
+        if len(Wiper.points) > 2 and Wiper.curve_on:
             pygame.draw.aalines(self.screen, self.get_color(), False, Wiper.points)
-        self.drawline()
+        if Wiper.line_on:
+            self.drawline()
 
     def drawcurve(self):
         x = self.r * cos(self.theta) + self.pos[0]
@@ -64,6 +67,8 @@ class Wiper:
     def print_controls(self):
         print("=" * 75)
         print("p = pause")
+        print("c = toggle curve")
+        print("l = toggle line")
         print("d = deletion mode")
         print("r = select r scale")
         print("t = select theta scale")

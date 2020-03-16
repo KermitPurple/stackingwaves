@@ -88,6 +88,10 @@ while running:
                 Wiper.deletion_mode = not Wiper.deletion_mode
                 wiper.theta = 0
                 Wiper.points = []
+            elif event.unicode == 'l':
+                Wiper.line_on = not Wiper.line_on
+            elif event.unicode == 'c':
+                Wiper.curve_on = not Wiper.curve_on
     screen.fill((0,0,0))
     wiper.draw()
     wiper.update()
