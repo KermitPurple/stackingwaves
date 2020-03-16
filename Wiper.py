@@ -25,16 +25,24 @@ class Wiper:
             self.drawcurve()
         if len(Wiper.points) > 2:
             pygame.draw.aalines(self.screen, self.get_color(), False, Wiper.points)
+        self.drawline()
 
     def drawcurve(self):
         x = self.r * cos(self.theta) + self.pos[0]
         y = self.r * sin(self.theta) + self.pos[1]
-        pygame.draw.line(self.screen, (255,255,255), self.pos, (x,y))
         if self.n > 1:
             return Wiper(self.screen, (x,y), self.r/Wiper.r_scale, self.n-1, self.theta*Wiper.theta_scale).drawcurve()
         else:
-            pygame.draw.circle(self.screen, self.get_color(),(int(x),int(y)) ,5)
             return (int(x),int(y))
+
+    def drawline(self):
+        x = self.r * cos(self.theta) + self.pos[0]
+        y = self.r * sin(self.theta) + self.pos[1]
+        pygame.draw.line(self.screen, (255,255,255), self.pos, (x,y))
+        if self.n > 1:
+            Wiper(self.screen, (x,y), self.r/Wiper.r_scale, self.n-1, self.theta*Wiper.theta_scale).drawline()
+        else:
+            pygame.draw.circle(self.screen, self.get_color(),(int(x),int(y)) ,5)
 
     def get_color(self):
         degrees = (self.theta * 180 / Wiper.pi)%360
