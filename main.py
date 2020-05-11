@@ -4,9 +4,9 @@ from Wiper import Wiper
 os.environ["SDL_VIDEO_WINDOW_POS"] = "15,30"
 
 pygame.display.init()
-size = 650,650
+size = 1300, 650
 screen = pygame.display.set_mode(size)
-wiper = Wiper(screen, (int(size[0]/2), int(size[1]/2)), 100, 1, 0)
+wiper = Wiper(screen, (int(size[0]/4), int(size[1]/2)), 100, 1, 0)
 Wiper.print_controls()
 selected = 'n'
 running = True
@@ -93,6 +93,6 @@ while running:
             elif event.unicode == 'c':
                 Wiper.curve_on = not Wiper.curve_on
     screen.fill((0,0,0))
-    wiper.draw()
     wiper.update()
+    wiper.draw()
     pygame.display.update()
