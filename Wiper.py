@@ -64,6 +64,7 @@ class Wiper:
                 else:
                     self.theta = 2 * Wiper.pi
 
+    @classmethod
     def print_controls(self):
         print("=" * 75)
         print("p = pause")

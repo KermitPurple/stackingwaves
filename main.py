@@ -7,7 +7,7 @@ pygame.display.init()
 size = 650,650
 screen = pygame.display.set_mode(size)
 wiper = Wiper(screen, (int(size[0]/2), int(size[1]/2)), 100, 1, 0)
-wiper.print_controls()
+Wiper.print_controls()
 selected = 'n'
 running = True
 while running:
