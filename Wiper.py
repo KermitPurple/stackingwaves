@@ -19,6 +19,7 @@ class Wiper:
         self.n = n
         self.theta = theta
         self.paused = False
+        self.current_y = None
 
     def draw(self):
         if (self.theta < 2 * Wiper.pi or not Wiper.deletion_mode) and not self.paused:
@@ -36,6 +37,7 @@ class Wiper:
         if self.n > 1:
             return Wiper(self.screen, (x,y), self.r/Wiper.r_scale, self.n-1, self.theta*Wiper.theta_scale).drawcurve()
         else:
+            self.current_y = y
             return (int(x),int(y))
 
     def drawline(self):
