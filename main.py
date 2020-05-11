@@ -1,12 +1,14 @@
 import pygame
 import os
 from Wiper import Wiper
+from Curve import Curve
 os.environ["SDL_VIDEO_WINDOW_POS"] = "15,30"
 
 pygame.display.init()
 size = 1300, 650
 screen = pygame.display.set_mode(size)
 wiper = Wiper(screen, (int(size[0]/4), int(size[1]/2)), 100, 1, 0)
+curve = Curve(screen, (size[0]/2, size[1]/2), size[0])
 Wiper.print_controls()
 selected = 'n'
 running = True
@@ -95,5 +97,6 @@ while running:
     screen.fill((0,0,0))
     wiper.update()
     wiper.draw()
-    pygame.draw.circle(screen, wiper.get_color(), (5, wiper.current_y), 5)
+    curve.draw(wiper.get_color())
+    curve.update(wiper.current_y)
     pygame.display.update()
