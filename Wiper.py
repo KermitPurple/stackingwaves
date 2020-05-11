@@ -35,10 +35,9 @@ class Wiper:
         x = self.r * cos(self.theta) + self.pos[0]
         y = self.r * sin(self.theta) + self.pos[1]
         if self.n > 1:
-            return Wiper(self.screen, (x,y), self.r/Wiper.r_scale, self.n-1, self.theta*Wiper.theta_scale).drawcurve()
-        else:
-            self.current_y = y
-            return (int(x),int(y))
+            x, y = Wiper(self.screen, (x,y), self.r/Wiper.r_scale, self.n-1, self.theta*Wiper.theta_scale).drawcurve()
+        self.current_y = int(y)
+        return (int(x),int(y))
 
     def drawline(self):
         x = self.r * cos(self.theta) + self.pos[0]

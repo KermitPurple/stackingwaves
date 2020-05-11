@@ -95,4 +95,5 @@ while running:
     screen.fill((0,0,0))
     wiper.update()
     wiper.draw()
+    pygame.draw.circle(screen, wiper.get_color(), (5, wiper.current_y), 5)
     pygame.display.update()
