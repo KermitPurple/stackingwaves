@@ -98,5 +98,5 @@ while running:
     wiper.update()
     wiper.draw()
     curve.draw(wiper.get_color())
-    curve.update(wiper.current_y)
+    if not wiper.paused: curve.update(wiper.current_y)
     pygame.display.update()
