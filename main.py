@@ -24,62 +24,74 @@ while running:
                         wiper.n = new 
                         wiper.theta = 0
                         Wiper.points = []
+                        curve.clear()
                 elif selected == 'r':
                     if Wiper.r_scale != new:
                         Wiper.r_scale = new 
                         wiper.theta = 0
                         Wiper.points = []
+                        curve.clear()
                 elif selected == 'theta':
                     if Wiper.theta_scale != new:
                         Wiper.theta_scale = new 
                         wiper.theta = 0
                         Wiper.points = []
+                        curve.clear()
                 elif selected == 's':
                     if new == 1:
                         if Wiper.speed != 0.0001:
                             Wiper.speed = 0.0001
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 2:
                         if Wiper.speed != 0.0005:
                             Wiper.speed = 0.0005
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 3:
                         if Wiper.speed != 0.001:
                             Wiper.speed = 0.001
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 4:
                         if Wiper.speed != 0.002:
                             Wiper.speed = 0.002
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 5:
                         if Wiper.speed != 0.003:
                             Wiper.speed = 0.003
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 6:
                         if Wiper.speed != 0.004:
                             Wiper.speed = 0.004
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 7:
                         if Wiper.speed != 0.005:
                             Wiper.speed = 0.005
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 8:
                         if Wiper.speed != 0.02:
                             Wiper.speed = 0.02
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
                     elif new == 9:
                         if Wiper.speed != 0.05:
                             Wiper.speed = 0.05
                             wiper.theta = 0
                             Wiper.points = []
+                            curve.clear()
             elif event.unicode == 'r' or event.unicode == 'n' or event.unicode == 's':
                 selected = str(event.unicode)
             elif event.unicode == 't':
@@ -90,6 +102,7 @@ while running:
                 Wiper.deletion_mode = not Wiper.deletion_mode
                 wiper.theta = 0
                 Wiper.points = []
+                curve.clear()
             elif event.unicode == 'l':
                 Wiper.line_on = not Wiper.line_on
             elif event.unicode == 'c':

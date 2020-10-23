@@ -24,3 +24,8 @@ class Curve:
         self.y_values.insert(0, int(y))
         if len(self.y_values) > self.max_x:
             self.y_values.pop(-1)
+
+    def clear(self):
+        """ empty y values stored
+        """
+        self.y_values = []
